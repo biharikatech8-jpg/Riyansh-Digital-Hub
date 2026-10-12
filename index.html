@@ -25,13 +25,9 @@ h2{color:#174b91;border-bottom:2px solid #174b91;padding-bottom:8px;margin-top:3
 .action-buttons{margin-top:15px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .whatsapp-btn{background:#25D366}
 .call-btn{background:#007bff}
-.qr-btn{background:#6f42c1}
 footer{text-align:center;padding:25px;background:#102b55;color:white;margin-top:40px}
 .small{font-size:13px;color:#657085}
 .enquiry-item{border-left:4px solid #1264c5;padding-left:10px;margin-bottom:15px;background:#f8f9fa;padding:15px;border-radius:4px}
-.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);display:flex;justify-content:center;align-items:center;z-index:2000}
-.modal-content{background:white;padding:25px;border-radius:12px;text-align:center;max-width:90%;width:340px}
-.qr-img{width:200px;height:200px;margin:15px auto;display:block;border:1px solid #ccc;object-fit: contain}
 #previewCanvas{max-width:100%;margin-top:15px;border:1px solid #ccc;background:#fff;border-radius:6px}
 </style>
 </head>
@@ -43,7 +39,6 @@ footer{text-align:center;padding:25px;background:#102b55;color:white;margin-top:
   <div class="action-buttons">
      <a href="tel:+919999999999" class="btn call-btn">📞 कॉल करें</a>
      <a href="https://wa.me" target="_blank" class="btn whatsapp-btn">💬 व्हाट्सएप करें</a>
-     <button onclick="openQRModal()" class="btn qr-btn">💸 Pay QR Code</button>
   </div>
 </header>
 
@@ -52,7 +47,7 @@ footer{text-align:center;padding:25px;background:#102b55;color:white;margin-top:
   <a href="#tools">स्मार्ट टूल्स</a>
   <a href="#services">सेवाएं</a>
   <a href="#enquiry">Enquiry</a>
-  <a href="#admin">Admin</a>
+  <a href="#admin">Admin Login</a>
 </nav>
 
 <main class="container">
@@ -62,9 +57,9 @@ footer{text-align:center;padding:25px;background:#102b55;color:white;margin-top:
     <a href="#tools"><button style="background:#102b55">लाइव टूल्स इस्तेमाल करें</button></a>
   </section>
 
-  <!-- AKPRINTHUB STYLE LIVE TOOLS SECTION -->
+  <!-- SMART LIVE TOOLS SECTION -->
   <section id="tools">
-    <h2>⚡ AkPrintHub स्टाइल स्मार्ट टूल्स (Free & Instant)</h2>
+    <h2>⚡ स्मार्ट डिजिटल टूल्स (Free & Instant)</h2>
     
     <div class="grid">
       <!-- Tool 1: Passport Photo Maker -->
@@ -101,7 +96,7 @@ footer{text-align:center;padding:25px;background:#102b55;color:white;margin-top:
     </div>
 
     <!-- Live Preview Display Area -->
-    <div id="previewSection" class="card hidden text-center" style="text-align:center">
+    <div id="previewSection" class="card hidden" style="text-align:center">
       <h3>🔍 आपके टूल का आउटपुट (Live Preview)</h3>
       <canvas id="previewCanvas"></canvas>
       <br>
@@ -135,7 +130,7 @@ footer{text-align:center;padding:25px;background:#102b55;color:white;margin-top:
   </section>
 
   <section id="admin" class="card">
-    <h2>Admin Panel (दुकानदार के लिए)</h2>
+    <h2>Admin Panel (प्राप्त इन्क्वायरी देखने के लिए)</h2>
     <div id="loginBox">
       <p class="small">डेमो पासवर्ड: riyansh123</p>
       <label>Admin Password</label>
@@ -145,15 +140,7 @@ footer{text-align:center;padding:25px;background:#102b55;color:white;margin-top:
     </div>
 
     <div id="adminPanel" class="hidden">
-      <h3>QR Code सेटिंग्स (Future Lock System)</h3>
-      <div style="background:#f8f9fa;padding:15px;border-radius:6px;margin-bottom:20px;border:1px dashed #6f42c1">
-         <label><b>अपनी QR Code इमेज का लिंक डालें:</b></label>
-         <input id="qrUrlInput" placeholder="जैसे: https://yourwebsite.com" style="margin-bottom:8px">
-         <button onclick="saveQRUrl()" style="background:#6f42c1;padding:8px 12px">QR लिंक अपडेट करें</button>
-         <p id="qrSettingsMessage" style="color:green;margin:5px 0 0;font-size:14px"></p>
-      </div>
-
-      <h3>प्राप्त इन्क्वायरी सूची</h3>
+      <h3>ग्राहक इन्क्वायरी सूची</h3>
       <div style="margin-bottom:15px;display:flex;gap:10px">
          <button onclick="exportData()">JSON डाउनलोड करें</button>
          <button onclick="logout()" style="background:#dc3545">Logout</button>
@@ -164,24 +151,14 @@ footer{text-align:center;padding:25px;background:#102b55;color:white;margin-top:
   </section>
 </main>
 
-<div id="qrModal" class="modal hidden">
-  <div class="modal-content">
-    <h3 style="margin-top:0;color:#6f42c1">Riyansh Digital Hub - Pay QR</h3>
-    <p class="small">कृपया स्कैन करके पेमेंट करें और व्हाट्सएप पर स्क्रीनशॉट भेजें।</p>
-    <img id="displayQR" src="" alt="QR Code" class="qr-img">
-    <button onclick="closeQRModal()" style="background:#6c757d;width:100%">बंद करें</button>
-  </div>
-</div>
-
 <footer>
   <p>© 2026 Riyansh Digital Hub | सर्वाधिकार सुरक्षित</p>
   <p class="small" style="color:#a0aec0">डिजिटल सेवाओं के लिए आपका विश्वसनीय केंद्र</p>
 </footer>
 
 <script>
-// यहाँ अपना असली व्हाट्सएप नंबर डालें (बिना स्पेस या + के, जैसे 919999999999)
+// यहाँ अपना असली व्हाट्सएप नंबर डालें (जैसे 91XXXXXXXXXX)
 const MY_WHATSAPP_NUMBER = "919999999999"; 
-const DEFAULT_QR_URL = "https://qrserver.com";
 
 const services = [
   "Online Form (सरकारी/प्राइवेट नौकरी)",
@@ -207,3 +184,48 @@ services.forEach(function(service) {
   button.textContent = "इन्क्वायरी करें"; button.style.width = "100%";
   button.onclick = function() {
     customerService.value = service;
+    document.getElementById("enquiry").scrollIntoView({behavior: 'smooth'});
+  };
+  card.append(heading, button);
+  serviceList.appendChild(card);
+
+  const option = document.createElement("option");
+  option.value = service; option.textContent = service;
+  customerService.appendChild(option);
+});
+
+// PASSPORT PHOTO MAKER LOGIC
+function generatePassportPhotos() {
+  const input = document.getElementById("passportInput");
+  const count = parseInt(document.getElementById("photoCount").value);
+  if (!input.files || !input.files[0]) { alert("कृपया पहले एक फोटो अपलोड करें!"); return; }
+
+  const reader = new FileReader();
+  reader.onload = function(event) {
+    const img = new Image();
+    img.onload = function() {
+      const canvas = document.getElementById("previewCanvas");
+      const ctx = canvas.getContext("2d");
+      
+      const pWidth = 140; const pHeight = 180; const gap = 15;
+      const cols = count === 6 ? 6 : (count === 12 ? 6 : 8);
+      const rows = Math.ceil(count / cols);
+
+      canvas.width = (pWidth + gap) * cols + gap;
+      canvas.height = (pHeight + gap) * rows + gap;
+      
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      let currentPhoto = 0;
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          if (currentPhoto >= count) break;
+          const x = gap + c * (pWidth + gap);
+          const y = gap + r * (pHeight + gap);
+          
+          ctx.drawImage(img, x, y, pWidth, pHeight);
+          ctx.strokeStyle = "#000000";
+          ctx.lineWidth = 2;
+          ctx.strokeRect(x, y, pWidth, pHeight);
+          currentPhoto++;
